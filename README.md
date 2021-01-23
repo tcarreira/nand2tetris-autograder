@@ -5,6 +5,18 @@ Nand2Tetris materials are copyright the authors and may be found at https://www.
 Gradescope can be found at https://www.gradescope.com. 
 The autograder specification is documented at http://gradescope-autograders.readthedocs.io/en/latest/specs/.
 
+## Testing with Docker
+
+Docker is the only dependency needed for this:
+
+```
+docker run --rm -v "$(pwd)/spec/nand2tetris/projects/demo:/submission:ro" -v "$(pwd)/spec/results:/results" tcarreira/nand2tetris-autograder 00.test
+```
+
+- The `-v "<input>:/submission:ro"` volume works with a directory and also with `.zip`, `.tar.gz` or `.tar` files.
+- Mounting `/results` is optional if you just want to read the output.
+
+
 ## Testing the sample assignment
 The sample assignment (`00`) is intended to be completed in class as an introduction to HDL and to the 
 Gradescope autograder. It also serves as an example for the instructor.
