@@ -19,8 +19,8 @@ then
 	echo "                                     message is printed to the command console."
 elif [ $# -eq 0 ]
 then
-    echo "Error - cannot run in interactive mode on server"
-    exit 1 
+	# Run hardware simulator in interactive mode
+	java -classpath "${CLASSPATH}:bin/classes:BuiltIn:bin/lib/Hack.jar:bin/lib/HackGUI.jar:bin/lib/Simulators.jar:bin/lib/SimulatorsGUI.jar:bin/lib/Compilers.jar" HardwareSimulatorMain &
 else
 	# Convert arg1 to an absolute path and run hardware simulator with arg1
 	if [ `echo "$1" | sed -e "s/\(.\).*/\1/"` = / ]
@@ -30,5 +30,5 @@ else
 		arg1="${dir}/$1"
 	fi
 #	echo Running "$arg1"
-	java -Xms512m -classpath "${CLASSPATH}:bin/classes:BuiltIn:bin/lib/Hack.jar:bin/lib/HackGUI.jar:bin/lib/Simulators.jar:bin/lib/SimulatorsGUI.jar:bin/lib/Compilers.jar" HardwareSimulatorMain "$arg1"
+	java -classpath "${CLASSPATH}:bin/classes:BuiltIn:bin/lib/Hack.jar:bin/lib/HackGUI.jar:bin/lib/Simulators.jar:bin/lib/SimulatorsGUI.jar:bin/lib/Compilers.jar" HardwareSimulatorMain "$arg1"
 fi

@@ -105,13 +105,12 @@ echo "Click the Keyboard icon and hold down the 'K' key (uppercase) until you se
 // It's important to keep holding the key down since if the system is busy,
 // the memory will zero itself before being outputted.
 
-// Interactive test - comment out for autograder
-//while out <> 75 {
-//    eval,
-//}
-//
-//clear-echo,
-//output;
+while out <> 75 {
+    eval,
+}
+
+clear-echo,
+output;
 
 // Screen test
 
@@ -156,10 +155,9 @@ echo "Make sure you see ONLY two horizontal lines in the middle of the screen. H
 // It's important to keep holding the key down since if the system is busy,
 // the memory will zero itself before being outputted.
 
-// Interactive test - comment out for autograder
-//while out <> 89 {
-//    eval,
-//}
-//
-//clear-echo,
-//output;
+while out <> 89 {
+    eval,
+}
+
+clear-echo,
+output;
