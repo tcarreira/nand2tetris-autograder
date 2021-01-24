@@ -27,8 +27,10 @@ RUN mkdir -p /results \
 
 USER grader
 
-ENV SUBMISSION="/submission"
-ENV RESULTS_DIR="/results"
+ARG SUBMISSION="/submission"
+ENV SUBMISSION="${SUBMISSION}"
+ARG RESULTS_DIR="/results"
+ENV RESULTS_DIR="${RESULTS_DIR}"
 
 ENTRYPOINT [ "./auto-tester.sh" ]
 CMD [ "00.test" ]
