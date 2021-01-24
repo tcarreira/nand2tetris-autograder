@@ -5,6 +5,7 @@ OUTPUT_DIR="${RESULTS_DIR:-/results}"
 mkdir -p "${OUTPUT_DIR}"
 
 
+HOME="/grader"
 _submission_dir="${HOME}/spec/submission" # extracted files
 _tmp_extracted="/tmp/extracted_submission"
 mkdir -p "$_tmp_extracted"
@@ -61,5 +62,5 @@ echo "[INFO] Starting auto-grader"
 make "$@"
 
 echo "[INFO] Getting the Results"
-cp -r /grader/spec/results/* "${OUTPUT_DIR}/."  
+cp -r "${HOME}/spec/results/"* "${OUTPUT_DIR}/."  
 
