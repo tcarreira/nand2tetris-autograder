@@ -16,6 +16,10 @@ docker run --rm -v "$(pwd)/spec/nand2tetris/projects/demo:/submission:ro" -v "$(
 - The `-v "<input>:/submission:ro"` volume works with a directory and also with `.zip`, `.tar.gz` or `.tar` files.
 - Mounting `/results` is optional if you just want to read the output.
 
+When using some tool that mounts the `<input>` on the same path inside docker container, you may define the `SUBMISSION` env:
+```
+docker run --rm -e "SUBMISSION=/sandbox/submission.zip" -v "$(pwd)/submission.zip:/sandbox/submission.zip" tcarreira/nand2tetris-autograder 00.test
+``` 
 
 ## Testing the sample assignment
 The sample assignment (`00`) is intended to be completed in class as an introduction to HDL and to the 

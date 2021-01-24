@@ -1,7 +1,7 @@
 #!/bin/bash
 
-INPUT="/submission"
-OUTPUT_DIR="/results"
+INPUT="${SUBMISSION:-/submission}"
+OUTPUT_DIR="${RESULTS_DIR:-/results}"
 mkdir -p "${OUTPUT_DIR}"
 
 
