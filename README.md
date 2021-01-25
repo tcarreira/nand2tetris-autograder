@@ -10,11 +10,12 @@ The autograder specification is documented at http://gradescope-autograders.read
 Docker is the only dependency needed for this:
 
 ```
-docker run --rm -v "$(pwd)/spec/nand2tetris/projects/demo:/submission:ro" -v "$(pwd)/spec/results:/results" tcarreira/nand2tetris-autograder 00.test
+docker run --rm -v "$(pwd)/spec/nand2tetris/projects/demo:/submission:ro" tcarreira/nand2tetris-autograder 00.test
 ```
 
 - The `-v "<input>:/submission:ro"` volume works with a directory and also with `.zip`, `.tar.gz` or `.tar` files.
-- Mounting `/results` is optional if you just want to read the output.
+- If you want the result.json files, you can mounting `/results`: `-v "$(pwd)/spec/results:/results"`
+- If you want just a JSON output (without other messages), pass the env QUIET: `-e 'QUIET=yes'
 
 When using some tool that mounts the `<input>` on the same path inside docker container, you may define the `SUBMISSION` env:
 ```
