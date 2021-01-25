@@ -14,8 +14,8 @@ RUN groupadd grader -g "${GID}" \
 WORKDIR /grader
 
 COPY --chown=grader:grader Makefile .
-COPY --chown=grader:grader auto-tester.sh .
 COPY --chown=grader:grader spec ./spec
+COPY --chown=grader:grader docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN chmod +x ./spec/nand2tetris/tools/*.sh
 
@@ -27,14 +27,15 @@ RUN mkdir -p /results \
 
 USER grader
 
+# ENVs which you can choose different defaults on build time
 ARG SUBMISSION="/submission"
 ENV SUBMISSION="${SUBMISSION}"
 ARG RESULTS_DIR="/results"
 ENV RESULTS_DIR="${RESULTS_DIR}"
 ARG QUIET="no"
 ENV QUIET="${QUIET}"
+ARG STRIP_SH_ARGS="no"
+ENV STRIP_SH_ARGS="${STRIP_SH_ARGS}"
 
-ARG ENTRYPOINT_SH="/grader/auto-tester.sh"
-
-ENTRYPOINT [ ${ENTRYPOINT_SH} ]
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
 CMD [ "00.test" ]

@@ -6,6 +6,13 @@ INPUT="${SUBMISSION:-/submission}"
 OUTPUT_DIR="${RESULTS_DIR:-/results}"
 mkdir -p "${OUTPUT_DIR}"
 
+# Some tools (like https://github.com/StepicOrg/epicbox) pass the argument 
+#      as a commnand ['/bin/sh','-c','arg']. Strip it:
+if [ "x${STRIP_SH_ARGS}" == "xyes" ]; then
+    for foo in "/bin/sh" "/bin/bash" "/bin/ash" "-c"; do
+        [ "x$1" == "x$foo" ] && shift
+    done
+fi 
 
 HOME="/grader"
 _submission_dir="${HOME}/spec/submission" # extracted files
