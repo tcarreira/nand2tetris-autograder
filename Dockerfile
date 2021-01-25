@@ -31,6 +31,9 @@ ARG SUBMISSION="/submission"
 ENV SUBMISSION="${SUBMISSION}"
 ARG RESULTS_DIR="/results"
 ENV RESULTS_DIR="${RESULTS_DIR}"
+ARG QUIET="no"
+ENV QUIET="${QUIET}"
+
 
 ENTRYPOINT [ "/grader/auto-tester.sh" ]
 CMD [ "00.test" ]

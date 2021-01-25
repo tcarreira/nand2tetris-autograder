@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ "x${QUIET}" == "xyes" ] && exec 5>&1 1>/dev/null
+
 INPUT="${SUBMISSION:-/submission}"
 OUTPUT_DIR="${RESULTS_DIR:-/results}"
 mkdir -p "${OUTPUT_DIR}"
@@ -29,7 +31,7 @@ case "${file_output}" in
         ;;
 
     *"(No such file or directory)"*) 
-        printf "[ERROR] No file found. Using docker, mount the submission file with '-v'. eg:\n  docker run --rm -v \"\$(pwd)/submission.zip:/submission:ro\" <image> <args> %s\n" "$@"
+        printf "[ERROR] No file found. Using docker, mount the submission file with '-v'. eg:\n  docker run --rm -v \"\$(pwd)/submission.zip:/submission:ro\" <image> <args> %s\n" "$@" >&2
         exit 1
         ;;
     
@@ -39,7 +41,7 @@ case "${file_output}" in
         ;;
 
     *) 
-        echo "ERROR: unrecognised file type: ${file_output}"
+        echo "ERROR: unrecognised file type: ${file_output}" >&2
         exit 1
         ;;
 esac
@@ -64,3 +66,4 @@ make "$@"
 echo "[INFO] Getting the Results"
 cp -r "${HOME}/spec/results/"* "${OUTPUT_DIR}/."  
 
+[ "x${QUIET}" == "xyes" ] && cat "${HOME}/spec/results/results.json" >&5
