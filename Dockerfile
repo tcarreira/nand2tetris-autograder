@@ -34,6 +34,7 @@ ENV RESULTS_DIR="${RESULTS_DIR}"
 ARG QUIET="no"
 ENV QUIET="${QUIET}"
 
+ARG ENTRYPOINT_SH="/grader/auto-tester.sh"
 
-ENTRYPOINT [ "/grader/auto-tester.sh" ]
+ENTRYPOINT [ ${ENTRYPOINT_SH} ]
 CMD [ "00.test" ]
