@@ -40,12 +40,18 @@ fi
 
 # Copy test files to submission directory
 case $project in
-    00|01|02|03|04)
+    00|01|02|04)
         cp $projectdir/*.tst $submission
         cp $projectdir/*.cmp $submission
         ;;
+    03)
+        cp $projectdir/a/*.tst $submission/a
+        cp $projectdir/a/*.cmp $submission/a
+        cp $projectdir/b/*.tst $submission/b
+        cp $projectdir/b/*.cmp $submission/b
+        ;;
     05)
-        cp $projectdir/*.hack $submission       
+        cp $projectdir/*.hack $submission
         cp $projectdir/*.tst $submission
         cp $projectdir/*.cmp $submission
         ;;
@@ -57,8 +63,7 @@ esac
 # Reorganize submitted files
 case $project in
     03)
-        mkdir $submission/b
-        mv $submission/RAM*K.* $submission/b
+        mkdir $resultsdir/a
         mkdir $resultsdir/b
         ;;
 esac

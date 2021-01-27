@@ -1,8 +1,8 @@
-Bit         8
-PC          13
+a/Bit       8
+a/PC        13
+a/RAM64     8
+a/RAM8      13
+a/Register  3
 b/RAM16K    5
 b/RAM4K     5
-RAM512      5
-RAM64       8
-RAM8        13
-Register    3
+b/RAM512    5

@@ -24,7 +24,7 @@ file_output=$(file "$INPUT")
 case "${file_output}" in 
     *"Zip archive data"*) 
         echo "Extracting zip file"
-        unzip -j "${INPUT}" -d "${_tmp_extracted}"
+        unzip "${INPUT}" -d "${_tmp_extracted}"
         ;;
 
     *"POSIX tar archive"*) 
