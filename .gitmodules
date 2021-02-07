@@ -1,0 +1,3 @@
+[submodule "spec/nand2tetris"]
+	path = spec/nand2tetris
+	url = https://github.com/tcarreira/nand2tetris.git
