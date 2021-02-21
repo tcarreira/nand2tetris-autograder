@@ -57,6 +57,7 @@ echo "[INFO] Finding submission files"
 cd "$_tmp_extracted" || exit 111
 # iterate over some directories if single directory is found (when zipping nested dir)
 for _ in {1..3}; do
+    rm -rf _* .??* ~* # remove hidden files like __MACOSX or .hidden or ~TMP
     if [ "$(ls | wc -l)" -eq 1 ]; then
         singledir="$(ls)"
         [ -d "${singledir}" ] && cd "${singledir}" && continue
